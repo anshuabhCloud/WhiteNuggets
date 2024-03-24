@@ -3,6 +3,8 @@ import { TextField, Button, Box } from "@mui/material";
 
 const OrderSample = () => {
   const [address, setAddress] = useState({
+    adr1: "",
+    adr2: "",
     street: "",
     city: "",
     state: "",
@@ -18,69 +20,64 @@ const OrderSample = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
     console.log(address);
   };
 
   return (
-    <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-      <div>
-        <form onSubmit={handleSubmit}>
-
-        <TextField
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 2 , mt: 4}}>
+      <form onSubmit={handleSubmit}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', maxWidth: 500, gap: 2 }}>
+          <TextField
             name="adr1"
-            label="address line 1"
+            label="Address line 1"
             value={address.adr1}
             onChange={handleChange}
-            sx={{ m: 1, width: "75ch" }}
             required
           />
           <TextField
             name="adr2"
-            label="adddress line 2"
+            label="Address line 2"
             value={address.adr2}
             onChange={handleChange}
-            sx={{ m: 1, width: "75ch" }}
             required
           />
-        <TextField
+          <TextField
             name="street"
             label="Street"
             value={address.street}
             onChange={handleChange}
-            sx={{ m: 1, width: "50ch" }}
             required
           />
-          <TextField
-            name="city"
-            label="City"
-            value={address.city}
-            onChange={handleChange}
-            sx={{ m: 1, width: "25ch" }}
-          />
-          <TextField
-            name="state"
-            label="State"
-            value={address.state}
-            onChange={handleChange}
-            sx={{ m: 1, width: "25ch" }}
-            required
-          />
-          <TextField
-            name="zip"
-            label="ZIP"
-            value={address.zip}
-            onChange={handleChange}
-            sx={{ m: 1, width: "25ch" }}
-            required
-          />
-          <Box>
-          <Button type="submit" variant="contained" color="primary">
+          <Box sx={{ display: 'flex', gap: 2 }}>
+            <TextField
+              name="city"
+              label="City"
+              value={address.city}
+              onChange={handleChange}
+              sx={{ flex: 1 }}
+            />
+            <TextField
+              name="state"
+              label="State"
+              value={address.state}
+              onChange={handleChange}
+              sx={{ flex: 1 }}
+              required
+            />
+            <TextField
+              name="zip"
+              label="ZIP"
+              value={address.zip}
+              onChange={handleChange}
+              sx={{ flex: 1 }}
+              required
+            />
+          </Box>
+          <Button type="submit" variant="contained" sx={{ alignSelf: 'start' }}>
             Submit
           </Button>
-          </Box>
-        </form>
-      </div>
+        </Box>
+      </form>
     </Box>
   );
 };
